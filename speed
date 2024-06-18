@@ -1,0 +1,12 @@
+#!/bin/bash
+g++ gen.cc -o gen -std=c++2a -Wall -O2 -DTIMES=$1 -DSIZE2=$2 && \
+g++ std.cc -o std -lgmp -lgmpxx -I/home/mirai/gmp-6.3.0 -std=c++2a -Wall -O2 -DTIMES=$1 && \
+g++ main.cc -o main -Wall -Wextra -O2 -Wno-sign-compare -std=c++2a -DSIZE=$3 -DTIMES=$1
+
+if [ $? -ne 0 ]; then
+  exit 1
+fi
+
+./gen > test.in
+time ./main < test.in > test.out
+time ./std < test.in > test.ans

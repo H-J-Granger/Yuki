@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+g++ gen.cc -o gen -std=c++2a -Wall -O2 && \
+g++ std.cc -o std -lgmp -lgmpxx -I/home/mirai/gmp-6.3.0 -std=c++2a -Wall -O2 && \
+g++ main.cc -o main -Wall -Wextra -O2 -Wno-sign-compare -std=c++2a
